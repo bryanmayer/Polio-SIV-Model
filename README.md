@@ -4,7 +4,9 @@ This is the code to run the SIV (susceptible-infected-vaccined) model from the 2
 
 The details of the model have been written up in the [AJE paper](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Am.J.Epidemiol.-2013-Mayer-1236-45.pdf) and its [web supplement](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Web_Material.pdf).  The structure of the model is [here](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Model_Diagram.pdf "Model").
 
-To run the model, a working version of numpy and scipy are required.  pylab is also used but is not necessary.
+The model is coded using python.  To run the model, a working version of numpy and scipy are required.  pylab is also used but is not necessary.  The current code provided here generates one time-series simulation using run_model.py.  Parameters can be changed in load_parameters.py.
+
+TODO:  The results from the paper are created by running large batch runs over ranges of several parameters and looking at key results.  The batch scripts are not currently posted here but I plan to post an example: effectively they loop through the waning rate, OPV transmissibility, R0, and vaccination rates.  The time series are not saved (they are large, >100mb each) but key features from the simulation are: minimum prevalence, maximum prevalence, final force of infection, and age-specific versions of these values.
 
 # run_model.py 
 
@@ -18,7 +20,7 @@ This is a very simple implementation of the model.  The initial values (Code/Inp
 
 Alternatively, a large pre-vaccination period can be chosen (a large vaccine_start_date, usually greater than 100 years to be safe) to allow for steady state to be reached.
 
-The results from the paper are created by running large batch runs over range of values of several parameters and looking at key results.  The simulations are fairly slow, sometimes taking up to 5 minutes.  
+The simulations are fairly slow, sometimes taking up to 5 minutes.  
 
 #load_parameters.py
 Here you can edit the parameters:
@@ -26,26 +28,26 @@ Here you can edit the parameters:
 The simulation length -- ND (years)
 
 The main transmission parameters:  
-1) contact rate -- c (R_0 ~ c\delta)  
-2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1)  
+1) contact rate -- c (R_0 ~ c\delta).  
+2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1).  
 3) the relationship of OPV to WPV -- relative contagiousness (epsilon) and relative recovery (gamma).  For the paper we assumed epsilon = 1/gamma but that isn't necessary.
 
 The vaccination parameters:  
-1) vaccinate -- whether there is a vaccination program (True or False)  
-2) vaccination rate -- vaccRate (per year)  
-3) year vaccination starts in the model -- vaccine_start_yr.  May want to be late if changing contact rate without updating initial values  
+1) vaccinate -- whether there is a vaccination program (True or False).  
+2) vaccination rate -- vaccRate (per year).  
+3) year vaccination starts in the model -- vaccine_start_yr.  May want to be late if changing contact rate without updating initial values.  
 4) time to reach full vaccination rate -- vaccine_ramp_yrs.  We assume that vaccination program starts at vaccine_start_yr but doesn't reach the full vaccRate until after vaccine_ramp_yrs.  It linearly increases from 0 to vaccRate in this time.  
 
 Other parameters are listed, it is not recommended that they are edited
 
-#Code Folder
+#Code folder
 Contains some setup code, model code (ODE function), and the model class files to run the model.
 
 ## load_demographic.py
-The age compartment and vital dynamic setup
+The age compartment and vital dynamic setup.
 
 ## load_waning.py
-Implementation of the waning function (see [web supplement](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Web_Material.pdf)) 
+Implementation of the waning function (see [web supplement](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Web_Material.pdf)). 
 
 ## polio_model_class.py
 This class object is how I decided to store the model object.  A lot of code here is to restructure the population array (3 x n x m) into a vector to be used by odeint. In hindsight, using an object is computationally inefficient.
@@ -59,8 +61,8 @@ Contains initial value file and age-specific death rates for vital dynamics.
 # Output_figures folder
 Figures generated from the run_model.py.  At this point just the prevalance figure and the total population figure (which is currently commented out in the run_model.py file)
 
-# Figures folder
-TODO -- the figures from the manuscript and the R code used to create them.
+# Paper_figures folder
+The figures from the manuscript and the R code and simulation data used to create them.
 
 
 #main_notebook.ipynb
