@@ -2,12 +2,11 @@
 
 This is the code to run the SIV (susceptible-infected-vaccined) model from the 2013 American Journal of Epidemiology publication: "Successes and shortcomings of polio eradication: a transmission modeling analysis."  
 
-The details of the model have been written up in the [AJE paper](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Am.J.Epidemiol.-2013-Mayer-1236-45.pdf) and its [web supplement](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Web_Material.pdf).  The structure of the model is:
-![Math Model](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Model_Diagram.pdf "Model").
+The details of the model have been written up in the [AJE paper](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Am.J.Epidemiol.-2013-Mayer-1236-45.pdf) and its [web supplement](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Publication/Web_Material.pdf).  The structure of the model is [here](https://github.com/bryanmayer/Polio-SIV-Model/blob/master/Model_Diagram.pdf "Model").
 
 # run_model.py 
 
-This file will run the model and output a figure showing the prevalence over time.  Parameters can be edited in the load_parameters.py file (see next section)
+This file will run the model and output a figure showing the prevalence over time (in Output_figures).  Parameters can be edited in the load_parameters.py file (see next section)
 This can be run in bash using:
 
     >>> python run_model.py
@@ -24,15 +23,15 @@ Here you can edit the parameters:
 
 The simulation length -- ND (years)
 
-The main transmission parameters:
-1)contact rate -- c ($R_0 \approx c/\delta)
-2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1)
+The main transmission parameters:  
+1)contact rate -- c ($R_0 \approx c/\delta)  
+2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1)  
 3) the relationship of OPV to WPV -- relative contagiousness ($\epsilon$) and relative recovery ($\gamma$).  For the paper we assumed $\epsilon = 1/\gamma$ but that isn't necessary.
 
-The vaccination parameters:
-1) vaccinate -- whether there is a vaccination program (True or False)
-2) vaccination rate -- vaccRate (per year)
-3) year vaccination starts in the model -- vaccine_start_yr.  May want to be late if changing contact rate without updating initial values
-4) time to reach full vaccination rate -- vaccine_ramp_yrs.  We assume that vaccination program starts at vaccine_start_yr but doesn't reach the full vaccRate until after vaccine_ramp_yrs.  It linearly increases from 0 to vaccRate in this time.
+The vaccination parameters:  
+1) vaccinate -- whether there is a vaccination program (True or False)  
+2) vaccination rate -- vaccRate (per year)  
+3) year vaccination starts in the model -- vaccine_start_yr.  May want to be late if changing contact rate without updating initial values  
+4) time to reach full vaccination rate -- vaccine_ramp_yrs.  We assume that vaccination program starts at vaccine_start_yr but doesn't reach the full vaccRate until after vaccine_ramp_yrs.  It linearly increases from 0 to vaccRate in this time.  
 
 Other parameters are listed, it is not recommended that they are edited
