@@ -10,13 +10,13 @@ TODO:  The results from the paper are created by running large batch runs over r
 
 # run_model.py 
 
-This file will run the model and output a figure showing the prevalence over time (in Output_figures).  Parameters can be edited in the load_parameters.py file (see next section)
+This file will run the model and output a figure (this will require pylab) showing the prevalence over time (in Output_figures).  Parameters can be edited in the load_parameters.py file (see next section)
 This can be run in bash using:
 
     >>> python run_model.py
 
 
-This is a very simple implementation of the model.  The initial values (Code/Input_data/example_initial.txt) are given for a contact rate of 160.  If you change the contact rate  (absent vaccination) then the compartment populations will change: there will be oscillatory behavior before a new steady state is reached.  To account for this, the model can be simulated without vaccine first, then the steady state values can be saved as the new initial value (change storeOut to 1 in runModel.py, this will store Code/Input_data/new_initial_values.txt). You can either edit the run_model.py file to point to the new initial value text file or change its name to example_initial.txt.
+This is a very simple implementation of the model.  The initial values (Code/Input_data/example_initial.txt) are given for a contact rate of 160.  If you change the contact rate  (absent vaccination) then the compartment populations will change: there will be oscillatory behavior before a new steady state is reached.  To account for this, the model can be simulated without vaccination first, then the steady state values can be saved as the new initial value (change storeOut to 1 in runModel.py, this will store Code/Input_data/new_initial_values.txt). You can either edit the run_model.py file to point to the new initial value text file or change its name to example_initial.txt.
 
 Alternatively, a large pre-vaccination period can be chosen (a large vaccine_start_date, usually greater than 100 years to be safe) to allow for steady state to be reached.
 
@@ -30,7 +30,7 @@ The simulation length -- ND (years)
 The main transmission parameters:  
 1) contact rate -- c (R_0 ~ c\delta).  
 2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1).  
-3) the relationship of OPV to WPV -- relative contagiousness (epsilon) and relative recovery (gamma).  For the paper we assumed epsilon = 1/gamma but that isn't necessary.
+3) the relationship of OPV to WPV -- relative contagiousness (epsilon) and relative recovery (kappa).  For the paper we assumed epsilon = 1/kappa but that isn't necessary.
 
 The vaccination parameters:  
 1) vaccinate -- whether there is a vaccination program (True or False).  
