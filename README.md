@@ -29,8 +29,9 @@ The simulation length -- ND (years)
 
 The main transmission parameters:  
 1) contact rate -- c (R_0 ~ c\delta).  
-2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1).  
-3) the relationship of OPV to WPV -- relative contagiousness (epsilon) and relative recovery (kappa).  For the paper we assumed epsilon = 1/kappa but that isn't necessary.
+2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1). It is reported in the paper as log(2)/roBetaRate = years until 50% susceptibility reached.  This comes from the exponential form of the waning function (see supplementary).
+3) The ratio of susceptibility waning rate to contagiousness/duration waning rates -- prop (fixed to 4 in the paper). The time to reach 50% susceptibility is the equivalent time to reach 16% for these infection features when prop = 4. (Percent = 1-exp(-log(2)/prop))  
+4) the relationship of OPV to WPV -- relative contagiousness (epsilon) and relative recovery (kappa).  For the paper we assumed epsilon = 1/kappa but that isn't necessary.
 
 The vaccination parameters:  
 1) vaccinate -- whether there is a vaccination program (True or False).  
@@ -38,7 +39,7 @@ The vaccination parameters:
 3) year vaccination starts in the model -- vaccine_start_yr.  May want to be late if changing contact rate without updating initial values.  
 4) time to reach full vaccination rate -- vaccine_ramp_yrs.  We assume that vaccination program starts at vaccine_start_yr but doesn't reach the full vaccRate until after vaccine_ramp_yrs.  It linearly increases from 0 to vaccRate in this time.  
 
-Other parameters are listed, it is not recommended that they are edited
+The remaining parameters listed below are derived from the above parameters.  TS could be edited to include more resolution (e.g., TS = 0.01) but the pulse/discontinuous aging structure requires 0.5 year ranges so changing t_end will invalidate(probably break) the model.
 
 #Code folder
 Contains some setup code, model code (ODE function), and the model class files to run the model.
