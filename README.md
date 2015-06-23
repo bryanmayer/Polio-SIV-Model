@@ -29,7 +29,7 @@ The simulation length -- ND (years)
 
 The main transmission parameters:  
 1) contact rate -- c (R_0 ~ c\delta).  
-2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1). It is reported in the paper as log(2)/roBetaRate = years until 50% susceptibility reached.  This comes from the exponential form of the waning function (see supplementary).
+2) the waning rate -- roBetaRate (paper uses 0.04, 0.07, and 0.1). It is reported in the paper as log(2)/roBetaRate = years until 50% susceptibility reached.  This comes from the exponential form of the waning function (see supplementary).  
 3) The ratio of susceptibility waning rate to contagiousness/duration waning rates -- prop (fixed to 4 in the paper). The time to reach 50% susceptibility is the equivalent time to reach 16% for these infection features when prop = 4. (Percent = 1-exp(-log(2)/prop))  
 4) the relationship of OPV to WPV -- relative contagiousness (epsilon) and relative recovery (kappa).  For the paper we assumed epsilon = 1/kappa but that isn't necessary.
 
