@@ -12,8 +12,9 @@ ND = 500 #years
 #### contact rate (R0 ~= c / 10) ####
 c = 160.
 
-#### wane rate ###
-roBetaRate = 0.07
+#### waning parameters ###
+roBetaRate = 0.07 #log(2)/roBetaRate is the years to reach 50% susceptibility
+prop = 4 #ratio of susceptibility to waning to contagiousness/duration, fixed to 4 in manuscript
 
 #### OPV parameters ####
 #relative contagiousness OPV:WPV

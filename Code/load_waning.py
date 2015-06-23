@@ -1,9 +1,7 @@
 n = 10  #wane states
 
 ####monophasic 3 parameters (actually 2 since rogamma=rotheta), roBetaRate varies
-prop = 4 #ratio of suspectiblity waning: contagiousness or duration waning
-
-
+#ro_betaRate and prop defined in load_parameters
 roGammaRate = roBetaRate/prop
 roThetaRate = roBetaRate/prop
 
